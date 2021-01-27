@@ -21,7 +21,7 @@ export class MainViewComponent implements OnInit {
       "One",
       "Two"
     ]),
-    new Column('Compeate', [
+    new Column('Compleate', [
 
     ])
   ]);

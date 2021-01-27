@@ -14,6 +14,26 @@
         </div>
 
         <div class="board-wrapper">
+            <div class="sidebar">
+                <h1 class="title-sidebar">
+                    Boards
+                </h1>
+
+                <div class="list-menu">
+                    <a class="list-menu-item is-active">
+                        <p> List1 </p>
+                    </a>
+                    <a class="list-menu-item">
+                        <p> List1 </p>
+                    </a>
+                    <a class="list-menu-item">
+                        <p> List1 </p>
+                    </a>
+                </div>
+
+                <button class="button is-primary"> + New Board </button>
+            </div>
+
             <div class="board-columns" cdkDropListGroup>
                 <div class="board-column" *ngFor="let column of board.columns">
                     <div class="column-title">
