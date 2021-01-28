@@ -20,18 +20,12 @@
                 </h1>
 
                 <div class="list-menu">
-                    <a class="list-menu-item is-active">
-                        <p> List1 </p>
-                    </a>
-                    <a class="list-menu-item">
-                        <p> List1 </p>
-                    </a>
-                    <a class="list-menu-item">
-                        <p> List1 </p>
+                    <a class="list-menu-item" *ngFor="let board of boards" [routerLink]="['/boards', board._id]" routerLinkActive="is-active">
+                        <p> {{ board.title }} </p>
                     </a>
                 </div>
 
-                <button class="button is-primary"> + New Board </button>
+                <button class="button is-primary" routerLink="/new-board"> + New Board </button>
             </div>
 
             <div class="board-columns" cdkDropListGroup>
@@ -44,8 +38,8 @@
                     [cdkDropListData]="column.tasks"
                     cdkDropListSortingDisabled
                     (cdkDropListDropped)="drop($event)">
-                        <div class="task" *ngFor="let item of column.tasks" cdkDrag>
-                            {{ item }}
+                        <div class="task" *ngFor="let task of tasks" cdkDrag>
+                            {{ task.title }}
                         </div>
                     </div>
                 </div>

@@ -7,15 +7,20 @@ import { MainViewComponent } from './components/main-view/main-view.component';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
+import { HttpClientModule } from '@angular/common/http';
+import { NewBoardComponent } from './pages/new-board/new-board.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     MainViewComponent,
+    NewBoardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DragDropModule
+    DragDropModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

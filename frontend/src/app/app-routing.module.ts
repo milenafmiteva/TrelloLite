@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainViewComponent } from './components/main-view/main-view.component';
+import { NewBoardComponent } from './pages/new-board/new-board.component';
 
 
 const routes: Routes = [
-  {path: '', component: MainViewComponent}
+  { path: '', redirectTo: 'boards', pathMatch: 'full' },
+  { path: 'new-board', component: NewBoardComponent },
+  { path: 'boards', component: MainViewComponent},
+  { path: 'boards/:boardId', component: MainViewComponent}
 ];
 
 @NgModule({

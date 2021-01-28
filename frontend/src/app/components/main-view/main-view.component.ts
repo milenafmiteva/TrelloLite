@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Board } from 'src/app/models/border.model';
 import { Column } from 'src/app/models/column.model';
+import { TaskService } from 'src/app/task.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-main-view',
@@ -10,7 +12,10 @@ import { Column } from 'src/app/models/column.model';
 })
 export class MainViewComponent implements OnInit {
 
-  constructor() { }
+  boards: any[];
+  tasks: any[];
+
+  constructor(private taskService: TaskService, private route: ActivatedRoute) { }
 
   board: Board = new Board('Test Board', [
     new Column('To do', [
@@ -27,6 +32,19 @@ export class MainViewComponent implements OnInit {
   ]);
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params: Params) => {
+        console.log(params);
+
+        this.taskService.getTasks(params.boardId).subscribe((tasks: any[]) => {
+          this.tasks = tasks;
+        });
+      }
+    )
+
+    this.taskService.getBoards().subscribe((boards: any[]) => {
+      this.boards = boards;
+    })
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -38,5 +56,11 @@ export class MainViewComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
+  }
+
+  createNewBoard() {
+    this.taskService.createBoard('Testing').subscribe((response: any) => {
+      console.log(response);
+    });
   }
 }
