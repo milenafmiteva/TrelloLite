@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "trellolite-f6ed8": {
+      "hosting": {
+        "trello-lite": [
+          "trellolite-f6ed8"
+        ]
+      }
+    }
+  }
+}

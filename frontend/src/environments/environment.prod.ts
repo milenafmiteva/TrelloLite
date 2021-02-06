@@ -1,12 +1,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyDx4jK0Su7vt0-Lma9szPWW3u4b4BBROHU",
-    authDomain: "trello-lite-5504a.firebaseapp.com",
-    projectId: "trello-lite-5504a",
-    storageBucket: "trello-lite-5504a.appspot.com",
-    messagingSenderId: "518648817839",
-    appId: "1:518648817839:web:054f4c77fd4ab1c58a0c5a",
-    measurementId: "G-9LNKCT4QC1"
+    piKey: "AIzaSyBOWJZ9u2CLhVxJ9HS2SNrsR4tB_W5wzds",
+    authDomain: "trellolite-f6ed8.firebaseapp.com",
+    projectId: "trellolite-f6ed8",
+    storageBucket: "trellolite-f6ed8.appspot.com",
+    messagingSenderId: "286221344909",
+    appId: "1:286221344909:web:0d362c10cb095383d3c2c4",
+    measurementId: "G-WM4LXZ6ZW9"
   }
 };

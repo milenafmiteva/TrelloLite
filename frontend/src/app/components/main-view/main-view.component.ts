@@ -1,66 +1,80 @@
-import { Component, OnInit } from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import { Board } from 'src/app/models/border.model';
-import { Column } from 'src/app/models/column.model';
-import { TaskService } from 'src/app/task.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component } from '@angular/core';
+import { Task } from '../../task/task';
+import {MatDialog } from '@angular/material/dialog';
+import { TaskDialogComponent, TaskDialogResult } from '../../task-dialog/task-dialog.component';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
+
+const getObservable = (collection: AngularFirestoreCollection<Task>) => {
+  const subject = new BehaviorSubject([]);
+  collection.valueChanges({ idField: 'id'}).subscribe((val: Task[]) => {
+    subject.next(val);
+  });
+  return subject;
+};
 
 @Component({
   selector: 'app-main-view',
   templateUrl: './main-view.component.html',
   styleUrls: ['./main-view.component.scss']
 })
-export class MainViewComponent implements OnInit {
+export class MainViewComponent {
 
-  boards: any[];
-  tasks: any[];
+  todo = getObservable(this.store.collection('todo'));
 
-  constructor(private taskService: TaskService, private route: ActivatedRoute) { }
+  inProgress = getObservable(this.store.collection('inProgress'));
 
-  board: Board = new Board('Test Board', [
-    new Column('To do', [
-      "Some random idea",
-      "This is anothre idea"
-    ]),
-    new Column('In Progress', [
-      "One",
-      "Two"
-    ]),
-    new Column('Compleate', [
+  done = getObservable(this.store.collection('done'));
 
-    ])
-  ]);
 
-  ngOnInit(): void {
-    this.route.params.subscribe(
-      (params: Params) => {
-        console.log(params);
+  constructor(private dialog: MatDialog, private store: AngularFirestore) {}
 
-        this.taskService.getTasks(params.boardId).subscribe((tasks: any[]) => {
-          this.tasks = tasks;
-        });
-      }
-    )
-
-    this.taskService.getBoards().subscribe((boards: any[]) => {
-      this.boards = boards;
-    })
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<Task[]>): void {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+      return;
     }
+    const item = event.previousContainer.data[event.previousIndex];
+    this.store.firestore.runTransaction(() => {
+      return Promise.all([
+        this.store.collection(event.previousContainer.id).doc(item.id).delete(),
+        this.store.collection(event.container.id).add(item)
+      ]);
+    });
+    transferArrayItem(
+      event.previousContainer.data,
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 
-  createNewBoard() {
-    this.taskService.createBoard('Testing').subscribe((response: any) => {
-      console.log(response);
+  editTask(list: 'done' | 'todo' | 'inProgress', task: Task): void {
+    const dialogRef = this.dialog.open(TaskDialogComponent, {
+      width: '270px',
+      data: {
+        task,
+        enableDelete: true,
+      },
     });
+    dialogRef.afterClosed().subscribe((result: TaskDialogResult) => {
+      if (result.delete) {
+        this.store.collection(list).doc(task.id).delete();
+      } else {
+        this.store.collection(list).doc(task.id).update(task);
+      }
+    });
+  }
+
+  newTask(): void {
+    const dialogRef = this.dialog.open(TaskDialogComponent, {
+      width: '270px',
+      data: {
+        task: {},
+      },
+    });
+    dialogRef
+      .afterClosed()
+      .subscribe((result: TaskDialogResult) => this.store.collection('todo').add(result.task));
   }
 }
