@@ -40,7 +40,7 @@
                   id="todo" 
                   #todoList="cdkDropList" 
                   [cdkDropListData]="todo | async" 
-                  [cdkDropListConnectedTo]="[doneList, inProgressList]"
+                  [cdkDropListConnectedTo]="[inProgressList]"
                   (cdkDropListDropped)="drop($event)" 
                   class="list">
                   <p class="empty-label" *ngIf="(todo | async)?.length === 0">Empty list</p>
@@ -73,7 +73,6 @@
                   id="done"
                   #doneList="cdkDropList"
                   [cdkDropListData]="done | async"
-                  [cdkDropListConnectedTo]="[todoList, inProgressList]"
                   (cdkDropListDropped)="drop($event)"
                   class="list">
                   <p class="empty-label" *ngIf="(done | async)?.length === 0">Empty list</p>
