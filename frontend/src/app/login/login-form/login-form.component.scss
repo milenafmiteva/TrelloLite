@@ -1,0 +1,33 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.form-control {
+    display: block;
+}
+
+.form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 {
+    font-size: 21px;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+
+    background: -webkit-linear-gradient(#13f7f4,#2af598);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -20,6 +20,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AppRoutingModule } from './app-routing.module';
 import { MainViewComponent } from './components/main-view/main-view.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginModule } from './login/login.module';
 
 
 
@@ -28,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     MainViewComponent,
     TaskComponent,
-    TaskDialogComponent,
+    TaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

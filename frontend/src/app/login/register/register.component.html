@@ -1,0 +1,18 @@
+<form class="form" [formGroup]="registerForm">
+    
+    <h2>Register</h2>
+    <mat-form-field class="form-control">
+        <mat-label>Your email</mat-label>
+        <input matInput formControlName="email" type="text"/>
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>Your password</mat-label>
+        <input matInput formControlName="password" type="password"/>
+    </mat-form-field>
+
+    <div class="form-footer">
+        <button mat-button (click)="createUser()">Create a user</button>
+        <a routerLink="/login">Go to login</a>
+    </div>
+</form>

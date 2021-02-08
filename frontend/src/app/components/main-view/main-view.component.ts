@@ -5,6 +5,8 @@ import {MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent, TaskDialogResult } from '../../task-dialog/task-dialog.component';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 const getObservable = (collection: AngularFirestoreCollection<Task>) => {
   const subject = new BehaviorSubject([]);
@@ -28,7 +30,7 @@ export class MainViewComponent {
   done = getObservable(this.store.collection('done'));
 
 
-  constructor(private dialog: MatDialog, private store: AngularFirestore) {}
+  constructor(private dialog: MatDialog, private store: AngularFirestore, private auth: AngularFireAuth, private router: Router) {}
 
   drop(event: CdkDragDrop<Task[]>): void {
     if (event.previousContainer === event.container) {
@@ -76,5 +78,9 @@ export class MainViewComponent {
     dialogRef
       .afterClosed()
       .subscribe((result: TaskDialogResult) => this.store.collection('todo').add(result.task));
+  }
+
+  onLogout() {
+    this.auth.signOut().then(() => this.router.navigate(['login']));
   }
 }
