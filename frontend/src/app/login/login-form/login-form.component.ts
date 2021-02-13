@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-login-form',
@@ -12,7 +13,10 @@ export class LoginFormComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AngularFireAuth, private router: Router) { }
+  constructor(private fb: FormBuilder,
+              private auth: AngularFireAuth,
+              private router: Router,
+              private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -26,5 +30,9 @@ export class LoginFormComponent implements OnInit {
     this.auth
       .signInWithEmailAndPassword(email, password)
       .then(() => this.router.navigate(['']));
+  }
+
+  login(): void {
+    this.commonService.loginWithGoogle();
   }
 }
