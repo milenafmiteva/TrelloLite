@@ -1,5 +1,5 @@
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../../task/task';
 import {MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent, TaskDialogResult } from '../../task-dialog/task-dialog.component';
@@ -21,7 +21,11 @@ const getObservable = (collection: AngularFirestoreCollection<Task>) => {
   templateUrl: './main-view.component.html',
   styleUrls: ['./main-view.component.scss']
 })
-export class MainViewComponent {
+export class MainViewComponent implements OnInit {
+
+  @Input() randomSeed: string;
+
+  storedTheme: string = localStorage.getItem('theme-img');
 
   todo = getObservable(this.store.collection('todo'));
 
@@ -31,6 +35,15 @@ export class MainViewComponent {
 
 
   constructor(private dialog: MatDialog, private store: AngularFirestore, private auth: AngularFireAuth, private router: Router) {}
+  
+  ngOnInit(): void {
+    
+  }
+
+  setTheme(theme) {
+    localStorage.setItem('theme-img', theme);
+    this.storedTheme = localStorage.getItem('theme-img');
+  }
 
   drop(event: CdkDragDrop<Task[]>): void {
     if (event.previousContainer === event.container) {
@@ -83,4 +96,5 @@ export class MainViewComponent {
   onLogout() {
     this.auth.signOut().then(() => this.router.navigate(['login']));
   }
+
 }

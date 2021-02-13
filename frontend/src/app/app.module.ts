@@ -21,8 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MainViewComponent } from './components/main-view/main-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './login/login.module';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -30,8 +29,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     AppComponent,
     MainViewComponent,
     TaskComponent,
-    TaskDialogComponent,
-    UserProfileComponent
+    TaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +46,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    LoginModule
+    LoginModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

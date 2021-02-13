@@ -1,10 +1,47 @@
-<div class="root">
+<div class="root {{ storedTheme }}">
     <div class="navbar has-background-dark">
-        <div class="navbar-brand">
-            <div class="navbar-item">
-                <div class="app-name has-gradient-text"><img src="../../../assets/1.png" class="logo" width="80px" height="200px">TrelloLite</div>
-            </div>
+        <div class="app-name has-gradient-text">
+            <img src="../../../assets/1.png" class="logo" width="80px" height="200px">
+            <h1>TrelloLite</h1>
         </div>
+                
+        <mat-menu #Menu="matMenu">
+            <img src="https://avatars.dicebear.com/api/human/abcd{{ randomSeed }}}.svg" alt="avatar" mat-card-avatar>
+            <ng-template matMenuContent>
+                <button mat-menu-item (click)="newTask()">
+                    <mat-icon>add</mat-icon> Add Task
+                </button>
+
+                <hr/>
+
+                <div class="theme__options">
+                    <h3>Themes</h3>
+
+                    <img id="theme-blueberries" (click)="setTheme('theme-blueberries')"/>
+                    <img id="theme-blue" (click)="setTheme('theme-blue')"/>
+                    <img id="theme-green" (click)="setTheme('theme-green')"/>
+                    <img id="theme-brown" (click)="setTheme('theme-brown')"/>
+                    <img id="theme-white" (click)="setTheme('theme-white')"/>
+                    <img id="theme-mountains" (click)="setTheme('theme-mountains')"/>
+                    <img id="theme-dog" (click)="setTheme('theme-dog')"/>
+                    <img id="theme-tulip" (click)="setTheme('theme-tulip')"/>
+                    <img id="theme-coffee" (click)="setTheme('theme-coffee')"/>
+                    <img id="theme-rose" (click)="setTheme('theme-rose')"/>
+                </div>
+
+                <hr/>
+
+                <button mat-menu-item (click)="onLogout()">
+                    <mat-icon>logout</mat-icon> Logout
+                </button>
+                
+                
+            </ng-template>
+        </mat-menu>
+                  
+        <button mat-icon-button [matMenuTriggerFor]="Menu" [matMenuTriggerData]="">
+            <mat-icon class="material-icons md-36 material-icons md-light">account_circle</mat-icon>
+        </button>      
     </div>
 
     <div class="content-wrapper">
@@ -12,14 +49,6 @@
         <div class="board-bar">
             <p class="board-name">Board Name</p>
         </div>
-
-        <button mat-button (click)="onLogout()">
-            <mat-icon>logout</mat-icon> Logout
-        </button>
-        
-        <button mat-button (click)="newTask()">
-            <mat-icon>add</mat-icon> Add Task
-        </button>
 
         <div class="container-wrapper">
             <div class="sidebar">

@@ -1,16 +1,38 @@
 .root {
     height: 100%;
+    overflow-x: auto;
 
-    .app-name {
-        font-size: 28px;
-        font-family: "Lato", sans-serif;
-        font-weight: bold;
-    }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-    .has-gradient-text {
-        background: -webkit-linear-gradient(#13f7f4,#2af598);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        .material-icons.md-36 {
+            font-size: 36px; 
+            padding-right: 40px;
+        }
+
+        .material-icons.md-light {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .app-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+    
+            h1 {
+                font-weight: bold;
+                font-size: 28px;
+                font-family: "Lato", sans-serif;
+            }
+        }
+    
+        .has-gradient-text {
+            background: -webkit-linear-gradient(#13f7f4,#2af598);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     }
 
     .content-wrapper {
@@ -18,7 +40,6 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        max-width: 1400px;
         margin: auto;
     
         min-width: 0;
@@ -26,7 +47,9 @@
     
         .board-bar {
             background: rgba(gray, 0.5);
-        
+            margin-bottom: 30px;
+            text-align: center;
+            padding-top: 10px;
 
             .board-name {
                 font-size: 20px;
@@ -39,7 +62,7 @@
             display: flex;
             justify-content: space-around;
             flex-grow: 1;
-            overflow-x: auto;
+            
 
             .sidebar {
                 display: flex;
@@ -49,6 +72,7 @@
                 width: 150px;
                 border-radius: 10px;
                 background: rgba(white, 0.2);
+                margin-right: 25px;
 
                 .button {
                     width: 90%;
@@ -64,7 +88,7 @@
                     margin-top: 25px;
                     margin-left: 20px;
                     background: -webkit-linear-gradient(#13f7f4,#2af598);
-                    -webkit-background-clip: text;
+                    background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
 
@@ -161,4 +185,210 @@ app-new-task {
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
                 0 8px 10px 1px rgba(0, 0, 0, 0.14),
                 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+#theme-blueberries {
+    background-image: url(../../../assets/blueberries-690072_1920.jpg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    border: 1px solid black;
+}
+
+#theme-blue {
+    background-image: url(../../../assets/furniture-731449_1920.jpg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    border: 1px solid black;
+}
+
+#theme-green {
+    background-image: url(../../../assets/green-1245733_1920.jpg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    border: 1px solid black;
+}
+
+#theme-brown {
+    background-image: url(../../../assets/book-1210030_1920.jpg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    border: 1px solid black;
+}
+
+#theme-white {
+    background-image: url(../../../assets/columns-801715_1920.jpg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    border: 1px solid black;
+}
+
+#theme-mountains {
+    background-image: url(../../../assets/mountains-863474_1920.jpg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    border: 1px solid black;
+}
+
+#theme-dog {
+    background-image: url(../../../assets/pug-690566_1920.jpg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    border: 1px solid black;
+}
+
+#theme-tulip {
+    background-image: url(../../../assets/tulip-690320_1920.jpg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    border: 1px solid black;
+}
+
+#theme-coffee {
+    background-image: url(../../../assets/coffee-1030971_1920.jpg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    border: 1px solid black;
+}
+
+#theme-rose {
+    background-image: url(../../../assets/rose-5974372_1920.jpg);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    border: 1px solid black;
+}
+
+.root.theme-white {
+    background-image: url(../../../assets/blueberries-690072_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+}
+
+.root.theme-blue {
+    background-image: url(../../../assets/furniture-731449_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+}
+
+.root.theme-green {
+    background-image: url(../../../assets/green-1245733_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+
+    .column-title {
+        color: white;
+    }
+}
+
+.root.theme-brown {
+    background-image: url(../../../assets/book-1210030_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+}
+
+.root.theme-white {
+    background-image: url(../../../assets/columns-801715_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+}
+
+.root.theme-mountains {
+    background-image: url(../../../assets/mountains-863474_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+}
+
+.root.theme-dog {
+    background-image: url(../../../assets/pug-690566_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+
+    .column-title {
+        color: white;
+    }
+}
+
+.root.theme-tulip {
+    background-image: url(../../../assets/tulip-690320_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+
+    .column-title {
+        color: white;
+    }
+}
+
+.root.theme-coffee {
+    background-image: url(../../../assets/coffee-1030971_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    
+    .column-title {
+        color: white;
+    } 
+}
+
+.root.theme-rose {
+    background-image: url(../../../assets/rose-5974372_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+
+    .column-title {
+        color: white;
+    }
+
+    .app-name.has-gradient-text {
+        background: -webkit-linear-gradient(#d6a9ce,#ce3b61);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }
