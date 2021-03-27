@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBOWJZ9u2CLhVxJ9HS2SNrsR4tB_W5wzds",
-    authDomain: "trellolite-f6ed8.firebaseapp.com",
-    projectId: "trellolite-f6ed8",
-    storageBucket: "trellolite-f6ed8.appspot.com",
-    messagingSenderId: "286221344909",
-    appId: "1:286221344909:web:0d362c10cb095383d3c2c4",
-    measurementId: "G-WM4LXZ6ZW9"
+    apiKey: "AIzaSyC91H9tdOhflHwwrsF--jkXZ0i_pmz8ENI",
+    authDomain: "trellolite-db64a.firebaseapp.com",
+    projectId: "trellolite-db64a",
+    storageBucket: "trellolite-db64a.appspot.com",
+    messagingSenderId: "506105390331",
+    appId: "1:506105390331:web:0b58febe599f10c8fabc5e",
+    measurementId: "G-DV7CXFJFZF"
   }
 };
 
